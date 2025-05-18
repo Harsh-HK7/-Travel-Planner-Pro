@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner Pro</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/destinations/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/destinations/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/destinations/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="images/destinations/favicon_io/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="images/destinations/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-header">
+            <a href="#" class="logo">✈️ Travel Planner Pro</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#packing"><i class="fas fa-list-check"></i> Packing List</a></li>
+            <li><a href="#destinations"><i class="fas fa-globe"></i> Destinations</a></li>
+            <li><a href="#currency"><i class="fas fa-money-bill-wave"></i> Currency</a></li>
+            <li><a href="#countdown"><i class="fas fa-hourglass-start"></i> Countdown</a></li>
+            <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="#budget"><i class="fas fa-wallet"></i> Budget</a></li>
+            <li><a href="#language"><i class="fas fa-language"></i> Language</a></li>
+            <li><a href="#itinerary"><i class="fas fa-calendar-alt"></i> Itinerary</a></li>
+            <li><a href="#airport"><i class="fas fa-plane-departure"></i> Airport</a></li>
+            <li><a href="#moodboard"><i class="fas fa-palette"></i> Moodboard</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Packing List Section -->
+        <section id="packing" class="section">
+            <h2><i class="fas fa-list-check"></i> Packing Checklist</h2>
+            <div class="category-controls">
+                <button class="action-btn" onclick="addCategory()"><i class="fas fa-plus"></i> Add Category</button>
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="all">All Items</option>
+                    <option value="essentials">Essentials</option>
+                    <option value="clothes">Clothes</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="toiletries">Toiletries</option>
+                </select>
+            </div>
+            <div id="packingList" class="packing-list">
+                <!-- Packing categories will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Destinations Section -->
+        <section id="destinations" class="section">
+            <h2><i class="fas fa-globe"></i> Destinations</h2>
+            <div class="destination-filters">
+                <select id="regionFilter" aria-label="regionFilter">
+                    <option value="all">All Regions</option>
+                    <option value="europe">Europe 🇪🇺</option>
+                    <option value="asia">Asia 🌏</option>
+                    <option value="americas">Americas 🌎</option>
+                    <option value="africa">Africa 🌍</option>
+                    <option value="oceania">Oceania 🌏</option>
+                </select>
+            </div>
+            <div id="destinationList" class="destination-grid"></div>
+        </section>
+
+        <!-- Currency Converter Section -->
+        <section id="currency" class="section">
+            <h2><i class="fas fa-money-bill-wave"></i> Currency Converter</h2>
+            <div class="converter-container">
+                <div class="converter-input">
+                    <input type="number" id="amount" value="1" aria-label="amount">
+                    <select id="fromCurrency" aria-label="fromCurrency"></select>
+                    <span>to</span>
+                    <select id="toCurrency" aria-label="toCurrency"></select>
+                </div>
+                <div id="conversionResult" class="conversion-result"></div>
+            </div>
+        </section>
+
+        <!-- Trip Countdown Section -->
+        <section id="countdown" class="section">
+            <h2><i class="fas fa-hourglass-start"></i> Trip Countdown</h2>
+            <div class="countdown-container">
+                <div class="trip-dates">
+                    <input type="date" id="tripStart" aria-label="tripStart">
+                    <input type="date" id="tripEnd" aria-label="tripEnd">
+                </div>
+                <div id="countdownDisplay" class="countdown-display"></div>
+            </div>
+            <div class="daily-planner">
+                <h3>Daily Planner</h3>
+                <div id="dailyPlannerContainer"></div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <h2><i class="fas fa-images"></i> Travel Gallery</h2>
+            <div id="galleryGrid" class="gallery-grid"></div>
+            <div id="galleryModal" class="modal">
+                <span class="close-modal">&times;</span>
+                <img id="modalImage" src="" alt="">
+            </div>
+        </section>
+
+        <!-- Budget Tracker Section -->
+        <section id="budget" class="section">
+            <h2><i class="fas fa-wallet"></i> Budget Tracker</h2>
+            <div class="budget-container">
+                <div class="budget-input">
+                    <input type="number" id="budgetItem" placeholder="Amount">
+                    <input type="text" id="budgetDescription" placeholder="Description">
+                    <select id="budgetCategory" aria-label="budgetCategory">
+                        <option value="accommodation">Accommodation</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="food">Food</option>
+                        <option value="activities">Activities</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button class="action-btn" onclick="addBudgetItem()"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                <div id="budgetList"></div>
+                <div id="budgetTotal" class="budget-total"></div>
+            </div>
+        </section>
+
+        <!-- Language Cheat Sheet Section -->
+        <section id="language" class="section">
+            <h2><i class="fas fa-language"></i> Language Cheat Sheet</h2>
+            <div class="language-generator">
+                <select id="travelType" aria-label="travelType">
+                    <option value="business">Business Trip</option>
+                    <option value="leisure">Leisure Travel</option>
+                    <option value="adventure">Adventure Travel</option>
+                    <option value="foodie">Food Tourism</option>
+                </select>
+                <select id="targetLanguage" aria-label="targetLanguage"></select>
+                <button class="action-btn" onclick="generateCheatSheet()"><i class="fas fa-sync"></i> Generate</button>
+            </div>
+            <div id="cheatSheetContent"></div>
+        </section>
+
+        <!-- Itinerary Board Section -->
+        <section id="itinerary" class="section">
+            <h2><i class="fas fa-calendar-alt"></i> Interactive Itinerary</h2>
+            <div class="itinerary-controls">
+                <button class="action-btn" onclick="addDay()"><i class="fas fa-plus"></i> Add Day</button>
+            </div>
+            <div id="itineraryBoard" class="itinerary-board"></div>
+        </section>
+
+        <!-- Airport Navigation Section -->
+        <section id="airport" class="section">
+            <h2><i class="fas fa-plane-departure"></i> Airport Navigation</h2>
+            <div class="airport-controls">
+                <input type="text" id="gateFilter" placeholder="Search gates...">
+                <select id="terminalFilter" aria-label="terminalFilter">
+                    <option value="all">All Terminals</option>
+                </select>
+            </div>
+            <div id="airportMap" class="airport-map"></div>
+        </section>
+
+        <!-- Moodboard Section -->
+        <section id="moodboard" class="section">
+            <h2><i class="fas fa-palette"></i> Trip Moodboard</h2>
+            <div class="moodboard-controls">
+                <button class="action-btn" onclick="addSticker()"><i class="fas fa-plus"></i> Add Sticker</button>
+                <input type="time" id="stickerTime" aria-label="stickerTime">
+            </div>
+            <div id="moodboardCanvas" class="moodboard-canvas"></div>
+        </section>
+    </main>
+
+    <script src="js/packing.js"></script>
+    <script src="js/destinations.js"></script>
+    <script src="js/currency.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/itinerary.js"></script>
+    <script src="js/airport.js"></script>
+    <script src="js/moodboard.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
